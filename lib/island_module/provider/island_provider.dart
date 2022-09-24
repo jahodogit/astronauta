@@ -6,10 +6,24 @@ class IslandProvider extends ChangeNotifier {
   String water = "assets/water.png";
   String land = "assets/dust.png";
 
-  builMatrix(int columns, int rows) {
-    for (int i = 0; i < rows; i++) {
-      world.add(List.generate(columns, (int index) => Spot(xPosition: index, yPosition: i)));
-    }
+  builMatrix(int x, int y) {
+    world = List.generate(y, (rows) {
+      return List<Spot>.generate(x, (cols) {
+        var spot = Spot(xPosition: rows, yPosition: cols);
+        //print("$rows - $");
+        //print("${spot.xPosition} - ${spot.yPosition}");
+        return spot;
+      }, growable: true);
+    }, growable: true);
+
+    /*
+    for (int i = 0; i < y; i++) {
+      for (int j = 0; j < x; j++) {
+        world[i][j].xPosition = j;
+        world[i][j].yPosition = i;
+        print(j);
+      }
+    }*/
 
     notifyListeners();
   }

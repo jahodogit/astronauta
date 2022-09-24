@@ -1,8 +1,14 @@
 class Spot {
-  final int xPosition;
-  final int yPosition;
+  int? xPosition;
+  int? yPosition;
   bool type;
   String image;
 
-  Spot({required this.xPosition, required this.yPosition, this.type = false, this.image = "assets/water.png"});
+  Spot({this.xPosition, this.yPosition, this.type = false, this.image = "assets/water.png"});
+
+  Spot.from(Spot spot)
+      : xPosition = spot.xPosition,
+        yPosition = spot.yPosition,
+        type = spot.type,
+        image = spot.image;
 }
