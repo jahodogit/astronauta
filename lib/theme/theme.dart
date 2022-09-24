@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 Color primaryColor = const Color.fromARGB(230, 241, 2, 47);
 Color secundaryColor = const Color.fromARGB(230, 6, 1, 1);
-Color primaryColorLigth = const Color.fromARGB(230, 255, 171, 64);
+Color primaryColorLigth = const Color.fromARGB(80, 241, 2, 47);
 
 InputBorder textFieldBorderDecoration = OutlineInputBorder(
   borderRadius: BorderRadius.circular(5.0),

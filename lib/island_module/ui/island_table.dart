@@ -22,15 +22,15 @@ class _IslandTablePageState extends State<IslandTablePage> {
           title: const Text("Islands"),
         ),
         body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _islandProvider.world.isNotEmpty ? buidTable(context, _islandProvider) : SizedBox(),
+            _islandProvider.world.isNotEmpty ? buidTable(context, _islandProvider) : const SizedBox(),
             buildPanel(_islandProvider),
           ],
         ));
   }
 
-  Column buildPanel(IslandProvider islandProvider) {
+  Widget buildPanel(IslandProvider islandProvider) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -42,25 +42,52 @@ class _IslandTablePageState extends State<IslandTablePage> {
           "21",
           style: TextStyle(color: primaryColor, fontSize: 40, fontWeight: FontWeight.bold),
         ),
-        TextButton(
-            onPressed: () {
-              islandProvider.builMatrix(5, 6);
-            },
-            child: Row(
-              children: const [
-                Icon(Icons.add_box),
-                Text("Reset matrix"),
-              ],
-            ))
+        const SizedBox(height: 20),
+        Container(
+          color: primaryColorLigth,
+          width: MediaQuery.of(context).size.width / 10,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: "# rows",
+                  border: textFieldBorderDecoration,
+                  focusedBorder: textFieldBorderDecoration,
+                  labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
+                ),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: "# columns",
+                  border: textFieldBorderDecoration,
+                  focusedBorder: textFieldBorderDecoration,
+                  labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+        Container(
+          color: primaryColorLigth,
+          child: TextButton(
+              onPressed: () {
+                islandProvider.builMatrix(5, 6);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.add_box),
+                  Text("Reset matrix"),
+                ],
+              )),
+        ),
       ],
     );
   }
 
   Widget buidTable(BuildContext context, IslandProvider islandProvider) {
-    int col, row = 0;
-    int columnLength = islandProvider.world[0].length;
-    int allLength = islandProvider.world.length * islandProvider.world[0].length;
-
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
@@ -68,13 +95,20 @@ class _IslandTablePageState extends State<IslandTablePage> {
           width: MediaQuery.of(context).size.width * 0.5,
           height: MediaQuery.of(context).size.height * 0.8,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ...islandProvider.world.map((list) {
                 return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ...list.map((spot) => GestureDetector(
                           onDoubleTap: () => islandProvider.changeSpot(spot),
-                          child: Image.asset(spot.image, fit: BoxFit.cover),
+                          child: Image.asset(
+                            spot.image,
+                            fit: BoxFit.cover,
+                            width: 30,
+                            height: 30,
+                          ),
                         ))
                   ],
                 );
