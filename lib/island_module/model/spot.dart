@@ -4,5 +4,5 @@ class Spot {
   bool type;
   String image;
 
-  Spot({required this.xPosition, required this.yPosition, this.type = false, this.image = "assets/runner.png"});
+  Spot({required this.xPosition, required this.yPosition, this.type = false, this.image = "assets/water.png"});
 }

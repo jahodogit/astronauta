@@ -1,3 +1,6 @@
+import 'package:astronauta/island_module/provider/island_provider.dart';
+import 'package:provider/provider.dart';
+
 import 'package:astronauta/route.dart';
 import 'package:astronauta/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Astronauta",
-      theme: AstronautaTheme.generarTheme(),
-      home: const HomePage(),
-      routes: buildAppRoutes(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => IslandProvider()..builMatrix(10, 10)),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Astronauta",
+        theme: AstronautaTheme.generarTheme(),
+        home: const HomePage(),
+        routes: buildAppRoutes(),
+      ),
     );
   }
 }
