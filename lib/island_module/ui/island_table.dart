@@ -31,6 +31,9 @@ class _IslandTablePageState extends State<IslandTablePage> {
   }
 
   Widget buildPanel(IslandProvider islandProvider) {
+    final TextEditingController _rowsFieldController = TextEditingController();
+    final TextEditingController _columnsFieldController = TextEditingController();
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -50,6 +53,7 @@ class _IslandTablePageState extends State<IslandTablePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
+                controller: _rowsFieldController,
                 decoration: InputDecoration(
                   labelText: "# rows",
                   border: textFieldBorderDecoration,
@@ -58,6 +62,7 @@ class _IslandTablePageState extends State<IslandTablePage> {
                 ),
               ),
               TextFormField(
+                controller: _columnsFieldController,
                 decoration: InputDecoration(
                   labelText: "# columns",
                   border: textFieldBorderDecoration,
@@ -73,7 +78,10 @@ class _IslandTablePageState extends State<IslandTablePage> {
           color: primaryColorLigth,
           child: TextButton(
               onPressed: () {
-                islandProvider.builMatrix(5, 6);
+                islandProvider.builMatrix(
+                  int.parse(_columnsFieldController.text),
+                  int.parse(_rowsFieldController.text),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
