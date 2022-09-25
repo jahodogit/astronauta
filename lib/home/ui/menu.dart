@@ -49,8 +49,10 @@ class _MenuComponentState extends State<MenuComponent> {
                 ],
               )),
           const SizedBox(height: 10),
+          //TODO : Validate null operator error
+          /*
           TextButton(
-              onPressed: () => themeProvider.switchTheme(!themeProvider.isRestaurant),
+              onPressed: () => themeProvider.switchTheme(themeProvider.isRestaurant ? false : true),
               child: Row(
                 children: const [
                   Icon(Icons.design_services),
@@ -60,7 +62,8 @@ class _MenuComponentState extends State<MenuComponent> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
-              )),
+              )), 
+          */
         ],
       ),
     );

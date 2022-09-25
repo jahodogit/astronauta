@@ -11,14 +11,17 @@ InputBorder textFieldBorderDecoration = OutlineInputBorder(
   borderSide: BorderSide(color: primaryColorRestaurant),
 );
 
-InputBorder textFieldBorderDecorationBlue = OutlineInputBorder(
-  borderRadius: BorderRadius.circular(5.0),
-  borderSide: BorderSide(color: secundaryColorRestaurant),
-);
-
-InputBorder textFieldBorderDecorationWhite = OutlineInputBorder(
-  borderRadius: BorderRadius.circular(5.0),
-  borderSide: const BorderSide(color: Colors.white),
+TabBarTheme tabBarTheme = TabBarTheme(
+  unselectedLabelColor: Colors.black,
+  labelStyle: const TextStyle(color: Colors.white),
+  labelColor: Colors.white,
+  indicator: ShapeDecoration(
+      color: Colors.orange,
+      shape: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: const BorderSide(color: Colors.orange),
+      )),
+  //indicatorSize: TabBarIndicatorSize.tab,
 );
 
 class RestaurantTheme {
@@ -31,8 +34,11 @@ class RestaurantTheme {
         backgroundColor: primaryColorRestaurant,
       ),
       backgroundColor: secundaryColorRestaurant,
-      buttonTheme: ButtonThemeData(buttonColor: secundaryColorRestaurant),
+      buttonTheme: ButtonThemeData(
+        buttonColor: secundaryColorRestaurant,
+      ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: primaryColorRestaurant),
+      tabBarTheme: tabBarTheme,
     );
   }
 }

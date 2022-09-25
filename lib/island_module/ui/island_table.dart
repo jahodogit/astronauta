@@ -53,20 +53,20 @@ class _IslandTablePageState extends State<IslandTablePage> {
             children: [
               TextFormField(
                 controller: _rowsFieldController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "# rows",
                   //border: textFieldBorderDecoration,
                   //focusedBorder: textFieldBorderDecoration,
-                  labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
+                  labelStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
                 ),
               ),
               TextFormField(
                 controller: _columnsFieldController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "# columns",
                   //border: textFieldBorderDecoration,
                   //focusedBorder: textFieldBorderDecoration,
-                  labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
+                  labelStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
                 ),
               ),
             ],
