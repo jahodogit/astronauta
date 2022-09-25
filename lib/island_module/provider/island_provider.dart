@@ -14,11 +14,11 @@ class IslandProvider extends ChangeNotifier {
   void builMatrix(int col, int row) {
     rows = row;
     columns = col;
-    //First generate rows list
+    //First, generate rows list
     world = List.generate(row, (rowsIndex) {
-      //Second generate columns lists
+      //Second, generate columns lists
       return List<Spot>.generate(col, (colsIndex) {
-        //Tird construct a spot for each column
+        //Tird, construct a spot for each column
         var spot = Spot(xPosition: rowsIndex, yPosition: colsIndex);
         return spot;
       }, growable: true);

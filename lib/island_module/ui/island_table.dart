@@ -1,5 +1,5 @@
 import 'package:astronauta/island_module/provider/island_provider.dart';
-import 'package:astronauta/theme/theme.dart';
+import 'package:astronauta/themes/astronauta_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

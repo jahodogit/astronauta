@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+//Fortox's palette
+
+Color primaryColor = Colors.orange;
+Color secundaryColor = Colors.white;
+Color primaryColorLigth = const Color.fromARGB(80, 241, 2, 47);
+
+InputBorder textFieldBorderDecoration = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+  borderSide: BorderSide(color: primaryColor),
+);
+
+InputBorder textFieldBorderDecorationBlue = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+  borderSide: BorderSide(color: secundaryColor),
+);
+
+InputBorder textFieldBorderDecorationWhite = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(5.0),
+  borderSide: const BorderSide(color: Colors.white),
+);
+
+class RestaurantTheme {
+  static ThemeData generarTheme() {
+    return ThemeData(
+      colorScheme: const ColorScheme.light().copyWith(primary: primaryColor),
+      primaryColor: primaryColor,
+      primaryColorDark: secundaryColor,
+      appBarTheme: AppBarTheme(
+        backgroundColor: primaryColor,
+      ),
+      backgroundColor: secundaryColor,
+      buttonTheme: ButtonThemeData(buttonColor: secundaryColor),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: primaryColor),
+    );
+  }
+}
