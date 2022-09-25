@@ -3,12 +3,7 @@ class Spot {
   int? yPosition;
   bool type;
   String image;
+  bool visited;
 
-  Spot({this.xPosition, this.yPosition, this.type = false, this.image = "assets/water.png"});
-
-  Spot.from(Spot spot)
-      : xPosition = spot.xPosition,
-        yPosition = spot.yPosition,
-        type = spot.type,
-        image = spot.image;
+  Spot({this.xPosition, this.yPosition, this.type = false, this.image = "assets/water.png", this.visited = false});
 }

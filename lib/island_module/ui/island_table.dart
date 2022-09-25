@@ -1,4 +1,3 @@
-import 'package:astronauta/island_module/model/spot.dart';
 import 'package:astronauta/island_module/provider/island_provider.dart';
 import 'package:astronauta/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +41,7 @@ class _IslandTablePageState extends State<IslandTablePage> {
           style: TextStyle(color: primaryColor, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         Text(
-          "21",
+          islandProvider.islandCounter.toString(),
           style: TextStyle(color: primaryColor, fontSize: 40, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
@@ -86,8 +85,23 @@ class _IslandTablePageState extends State<IslandTablePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Icon(Icons.add_box),
+                  Icon(Icons.update),
                   Text("Reset matrix"),
+                ],
+              )),
+        ),
+        const SizedBox(height: 20),
+        Container(
+          color: primaryColorLigth,
+          child: TextButton(
+              onPressed: () {
+                islandProvider.getNumberIslands();
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.update),
+                  Text("Calculate"),
                 ],
               )),
         ),
@@ -102,26 +116,35 @@ class _IslandTablePageState extends State<IslandTablePage> {
           color: primaryColor,
           width: MediaQuery.of(context).size.width * 0.5,
           height: MediaQuery.of(context).size.height * 0.8,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ...islandProvider.world.map((list) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ...list.map((spot) => GestureDetector(
-                          onDoubleTap: () => islandProvider.changeSpot(spot),
-                          child: Image.asset(
-                            spot.image,
-                            fit: BoxFit.cover,
-                            width: 30,
-                            height: 30,
-                          ),
-                        ))
-                  ],
-                );
-              })
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ...islandProvider.world.map((list) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ...list.map((spot) => GestureDetector(
+                            onTap: () {
+                              islandProvider.changeSpot(spot);
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  color: spot.type ? Colors.green : Colors.blue,
+                                  width: 30,
+                                  height: 30,
+                                ),
+                                //Text(spot.type.toString()),
+                                //Text(spot.visited.toString())
+                              ],
+                            ),
+                          ))
+                    ],
+                  );
+                })
+              ],
+            ),
           )),
     );
   }
