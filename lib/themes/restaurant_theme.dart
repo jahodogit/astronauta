@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 //Fortox's palette
 
-Color primaryColor = Colors.orange;
-Color secundaryColor = Colors.white;
-Color primaryColorLigth = const Color.fromARGB(80, 241, 2, 47);
+Color primaryColorRestaurant = Colors.orange;
+Color secundaryColorRestaurant = Colors.white;
+Color primaryColorLigthRestaurant = const Color.fromARGB(80, 241, 2, 47);
 
 InputBorder textFieldBorderDecoration = OutlineInputBorder(
   borderRadius: BorderRadius.circular(5.0),
-  borderSide: BorderSide(color: primaryColor),
+  borderSide: BorderSide(color: primaryColorRestaurant),
 );
 
 InputBorder textFieldBorderDecorationBlue = OutlineInputBorder(
   borderRadius: BorderRadius.circular(5.0),
-  borderSide: BorderSide(color: secundaryColor),
+  borderSide: BorderSide(color: secundaryColorRestaurant),
 );
 
 InputBorder textFieldBorderDecorationWhite = OutlineInputBorder(
@@ -24,15 +24,15 @@ InputBorder textFieldBorderDecorationWhite = OutlineInputBorder(
 class RestaurantTheme {
   static ThemeData generarTheme() {
     return ThemeData(
-      colorScheme: const ColorScheme.light().copyWith(primary: primaryColor),
-      primaryColor: primaryColor,
-      primaryColorDark: secundaryColor,
+      colorScheme: const ColorScheme.light().copyWith(primary: primaryColorRestaurant),
+      primaryColor: primaryColorRestaurant,
+      primaryColorDark: secundaryColorRestaurant,
       appBarTheme: AppBarTheme(
-        backgroundColor: primaryColor,
+        backgroundColor: primaryColorRestaurant,
       ),
-      backgroundColor: secundaryColor,
-      buttonTheme: ButtonThemeData(buttonColor: secundaryColor),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: primaryColor),
+      backgroundColor: secundaryColorRestaurant,
+      buttonTheme: ButtonThemeData(buttonColor: secundaryColorRestaurant),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: primaryColorRestaurant),
     );
   }
 }
