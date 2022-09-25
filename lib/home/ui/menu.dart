@@ -18,7 +18,10 @@ class _MenuComponentState extends State<MenuComponent> {
       child: Column(
         children: [
           TextButton(
-              onPressed: () => Navigator.of(context).pushNamed("/islands"),
+              onPressed: () {
+                themeProvider.switchTheme(false);
+                Navigator.of(context).pushNamed("/islands");
+              },
               child: Row(
                 children: const [
                   Icon(Icons.games),
@@ -31,7 +34,10 @@ class _MenuComponentState extends State<MenuComponent> {
               )),
           const SizedBox(height: 10),
           TextButton(
-              onPressed: () => Navigator.of(context).pushNamed("/restaurant"),
+              onPressed: () {
+                themeProvider.switchTheme(true);
+                Navigator.of(context).pushNamed("/restaurant");
+              },
               child: Row(
                 children: const [
                   Icon(Icons.food_bank),
@@ -44,7 +50,7 @@ class _MenuComponentState extends State<MenuComponent> {
               )),
           const SizedBox(height: 10),
           TextButton(
-              onPressed: () => themeProvider.switchTheme(),
+              onPressed: () => themeProvider.switchTheme(!themeProvider.isRestaurant),
               child: Row(
                 children: const [
                   Icon(Icons.design_services),

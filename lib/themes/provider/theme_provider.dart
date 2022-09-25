@@ -7,8 +7,8 @@ class ThemeProvider extends ChangeNotifier {
     isRestaurant = false;
   }
 
-  switchTheme() {
-    isRestaurant = !isRestaurant;
+  switchTheme(bool val) {
+    isRestaurant = val;
     notifyListeners();
   }
 }

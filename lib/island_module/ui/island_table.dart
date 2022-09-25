@@ -38,16 +38,16 @@ class _IslandTablePageState extends State<IslandTablePage> {
       children: [
         Text(
           "Island counter",
-          style: TextStyle(color: primaryColor, fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.bold),
         ),
         Text(
           islandProvider.islandCounter.toString(),
-          style: TextStyle(color: primaryColor, fontSize: 40, fontWeight: FontWeight.bold),
+          style: TextStyle(color: primaryColor, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
         Container(
           color: primaryColorLigth,
-          width: MediaQuery.of(context).size.width / 10,
+          width: MediaQuery.of(context).size.width * 0.2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -55,8 +55,8 @@ class _IslandTablePageState extends State<IslandTablePage> {
                 controller: _rowsFieldController,
                 decoration: InputDecoration(
                   labelText: "# rows",
-                  border: textFieldBorderDecoration,
-                  focusedBorder: textFieldBorderDecoration,
+                  //border: textFieldBorderDecoration,
+                  //focusedBorder: textFieldBorderDecoration,
                   labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
                 ),
               ),
@@ -64,8 +64,8 @@ class _IslandTablePageState extends State<IslandTablePage> {
                 controller: _columnsFieldController,
                 decoration: InputDecoration(
                   labelText: "# columns",
-                  border: textFieldBorderDecoration,
-                  focusedBorder: textFieldBorderDecoration,
+                  //border: textFieldBorderDecoration,
+                  //focusedBorder: textFieldBorderDecoration,
                   labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.normal),
                 ),
               ),
@@ -87,21 +87,6 @@ class _IslandTablePageState extends State<IslandTablePage> {
                 children: const [
                   Icon(Icons.update),
                   Text("Reset matrix"),
-                ],
-              )),
-        ),
-        const SizedBox(height: 20),
-        Container(
-          color: primaryColorLigth,
-          child: TextButton(
-              onPressed: () {
-                islandProvider.getNumberIslands();
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.update),
-                  Text("Calculate"),
                 ],
               )),
         ),
