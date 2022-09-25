@@ -29,8 +29,8 @@ class IslandProvider extends ChangeNotifier {
 
   void changeSpot(Spot spot) {
     spot.type = spot.type ? false : true;
+
     getNumberIslands();
-    //notifyListeners();
   }
 
   void getNumberIslands() {
@@ -44,24 +44,40 @@ class IslandProvider extends ChangeNotifier {
         }
       }
     }
+    //Reset
     deleteVisitedSpots();
     notifyListeners();
   }
 
   void validateNeighboors(int row, int col, Spot spot) {
+    /*
+    Pairs to check neighbors
+    
+    -1,-1 => Left above diagonal
+    -1,0 => Left
+    -1,1 => Left under diagonal
+    0,-1 => Above
+    0,1 => Under
+    1,-1 => Right above diagonal
+    1,0 => Right
+    1,1 => Right under diagonal
+    */
     List<int> rowDirections = [-1, -1, -1, 0, 0, 1, 1, 1];
     List<int> colDirections = [-1, 0, 1, -1, 1, -1, 0, 1];
 
     spot.visited = true;
 
     for (int n = 0; n < rowDirections.length; n++) {
-      if (row + rowDirections[n] >= 0 &&
-          row + rowDirections[n] < rows &&
-          col + colDirections[n] >= 0 &&
-          col + colDirections[n] < columns &&
-          (world[row + rowDirections[n]][col + colDirections[n]].type && !world[row + rowDirections[n]][col + colDirections[n]].visited)) {
+      if (row + rowDirections[n] >= 0 && //To validate row megative out of range
+          row + rowDirections[n] < rows && //To validate row positive out of range
+          col + colDirections[n] >= 0 && //To validate column megative out of range
+          col + colDirections[n] < columns && //To validate column positive out of range
+
+          ((world[row + rowDirections[n]][col + colDirections[n]].type) && //To validate if it's a land
+              (!world[row + rowDirections[n]][col + colDirections[n]].visited) //To validate if the spot was visited
+          )) {
         var nextSpot = world[row + rowDirections[n]][col + colDirections[n]];
-        validateNeighboors(row + rowDirections[n], col + colDirections[n], nextSpot);
+        validateNeighboors(row + rowDirections[n], col + colDirections[n], nextSpot); //Recursive call
       }
     }
   }
