@@ -24,12 +24,12 @@ class _IslandTablePageState extends State<IslandTablePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _islandProvider.world.isNotEmpty ? buidTable(context, _islandProvider) : const SizedBox(),
-            buildPanel(_islandProvider),
+            buildPanel(_islandProvider, context),
           ],
         ));
   }
 
-  Widget buildPanel(IslandProvider islandProvider) {
+  Widget buildPanel(IslandProvider islandProvider, BuildContext context) {
     final TextEditingController _rowsFieldController = TextEditingController();
     final TextEditingController _columnsFieldController = TextEditingController();
 
@@ -77,10 +77,16 @@ class _IslandTablePageState extends State<IslandTablePage> {
           color: primaryColorLigth,
           child: TextButton(
               onPressed: () {
-                islandProvider.builMatrix(
-                  int.parse(_columnsFieldController.text),
-                  int.parse(_rowsFieldController.text),
-                );
+                if (int.parse(_columnsFieldController.text) > 6) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('ups! Columns must be lees than 7!'),
+                  ));
+                } else {
+                  islandProvider.builMatrix(
+                    int.parse(_columnsFieldController.text),
+                    int.parse(_rowsFieldController.text),
+                  );
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
