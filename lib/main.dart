@@ -1,4 +1,5 @@
 import 'package:astronauta/island_module/provider/island_provider.dart';
+import 'package:astronauta/restaurant_module/provider/restaurant_provider.dart';
 import 'package:astronauta/themes/provider/theme_provider.dart';
 import 'package:astronauta/themes/restaurant_theme.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => IslandProvider()),
+        ChangeNotifierProvider(create: (_) => RestaurantProvider()..init()),
       ],
       child: Consumer<ThemeProvider>(
         builder: ((context, ThemeProvider themeProvider, child) {

@@ -9,7 +9,7 @@ class Restaurant {
     return Restaurant(
       id: json['id'],
       title: json['title'],
-      image: json['images']['original']['url'],
+      image: json['images']['fixed_height']['url'],
     );
   }
 }
