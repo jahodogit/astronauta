@@ -1,8 +1,8 @@
-import 'package:astronauta/restaurant_module/ui/all_tab.dart';
-import 'package:astronauta/restaurant_module/ui/beer_tab.dart';
-import 'package:astronauta/restaurant_module/ui/drinks_tab.dart';
-import 'package:astronauta/restaurant_module/ui/happy_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:astronauta/restaurant_module/ui/tab_components/all_tab.dart';
+import 'package:astronauta/restaurant_module/ui/tab_components/beer_tab.dart';
+import 'package:astronauta/restaurant_module/ui/tab_components/drinks_tab.dart';
+import 'package:astronauta/restaurant_module/ui/tab_components/happy_tab.dart';
 
 class RetsaurantTabBar extends StatelessWidget {
   const RetsaurantTabBar({Key? key}) : super(key: key);
